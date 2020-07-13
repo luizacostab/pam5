@@ -1,24 +1,17 @@
 function camera(){
-  navigator.camera.getPicture(onSuccess, onFail, { 
-    quality: 50,
-    destinationType: Camera.DestinationType.FILE_URI 
-  });
+  navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI });
   function onSuccess(imageURI) {
       var image = document.getElementById('img');
       image.src = imageURI;
   }
   function onFail(message) {
-      alert('Failed because: ' + message);
+      alert('Falhou porque: ' + message);
   }
 }
 function barcode(){
   cordova.plugins.barcodeScanner.scan(
       function (result) {
-        if(result.cancelled == true){
-          result.cancelled = 'foi cancelado'
-        } else{
-          result.cancelled = 'não foi cancelado'
-        }
           alert(
                 "Resultado: " + result.text + "\n" +
                 "Formato: " + result.format + "\n" +
